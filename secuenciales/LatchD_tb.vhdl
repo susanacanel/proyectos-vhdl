@@ -26,7 +26,7 @@ Prueba:
       report "Verificando el latch D"
       severity note;
 
-      -- Modelizo la señal de entrada de manera que:
+      -- Modelizo la senial de entrada de manera que:
       -- cambie un tiempo tsu (set-up) antes que cambie LE y 
       -- que se mantenga un tiempo th (hold) despues del  
       -- cambio de LE. Al esperar que se propague LE ya se  
@@ -195,7 +195,7 @@ Prueba:
          report "Falla para le=1, d=0"
          severity failure;
   		  
-      report "¡Verificación exitosa!"
+      report "Verificacion exitosa!"
       severity note;
       wait;
    end process Prueba;                      				
