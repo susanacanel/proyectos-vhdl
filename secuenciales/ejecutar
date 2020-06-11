@@ -1,0 +1,6 @@
+ghdl -a $1.vhdl && \
+ghdl -a $1_tb.vhdl && \
+ghdl -e $1_tb && \
+ghdl -r $1_tb && \
+ghdl -r $1_tb --wave=$1.ghw && \
+gtkwave $1.ghw &
