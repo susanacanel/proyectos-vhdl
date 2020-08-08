@@ -1,9 +1,8 @@
--- 07.08.20 ---------------------- Susana Canel ---------------------- DivisorFrec.vhdl 
--- DIVISOR DE FRECUENCIA POR 24. ESTA HECHO CON DOS CONTADORES
--- ANIDADOS, UNO CUENTA 2 PULSOS Y EL OTRO CUENTA 6 PULSOS DEL
--- PRIMERO. OTRO CONTADOR AYUDA A CONFIRMAR LA FRECUENCIA
--- OBTENIDA. LA IDEA ES TENER UN MODULO PARA HACER CONTADORES
--- QUE DIVIDAN FRECUENCIAS DE MHz A Hz.
+-- 08.08.20 ---------------------- Susana Canel ---------------------- DivisorFrec.vhdl 
+-- DIVISOR DE FRECUENCIA POR 24. ESTA HECHO CON DOS CONTADORES ANIDADOS, UNO CUENTA  
+-- 2 PULSOS Y EL OTRO CUENTA 6 PULSOS DEL PRIMERO. OTRO CONTADOR AYUDA A CONFIRMAR LA 
+-- FRECUENCIA OBTENIDA. LA IDEA ES TENER UN MODULO PARA HACER CONTADORES QUE DIVIDAN 
+-- FRECUENCIAS DE MHz A Hz.
 
 library ieee;   
 use ieee.std_logic_1164.all;
@@ -37,7 +36,7 @@ begin
           contador1 <= contador1 + 1;
         else
           contador1 <= 0;
-          if contador2 < 5 then           -- cuenta 6 pulsos de clk_i, de 0 a 5
+          if contador2 < 5 then           -- cuenta 6 pulsos de contador1, de 0 a 5
             contador2 <= contador2 + 1;
           else  
             contador2 <= 0;
