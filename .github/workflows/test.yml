@@ -1,0 +1,49 @@
+name: 'test'
+
+on:
+    push:
+    pull_request:
+    schedule:
+      - cron: '0 15 * * *'
+
+env:
+  CI: true
+
+jobs:
+
+
+  lin-docker:
+    runs-on: ubuntu-latest
+    env:
+      DOCKER_BUILDKIT: 1
+    steps:
+
+    - uses: actions/checkout@v2
+
+    - run: docker run --rm -v $(pwd):/src -w /src ghdl/vunit:llvm-master ./test.sh
+
+    - uses: actions/upload-artifact@v2
+      with:
+        name: waves
+        path: ./*.ghw
+
+
+  win-setup:
+    runs-on: windows-latest
+    defaults:
+      run:
+        shell: msys2 {0}
+    steps:
+
+    - uses: msys2/setup-msys2@v2
+      with:
+        msystem: MINGW64
+        update: true
+
+    - uses: actions/checkout@v2
+
+    - uses: ghdl/setup-ghdl-ci@master
+      with:
+        backend: llvm
+
+    - run: ./test.sh
