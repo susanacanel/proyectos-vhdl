@@ -1,14 +1,14 @@
--- 14.09.20 ------------------------------------ Susana Canel ------------------------------------------ ProdEntN_tb.vhdl
+-- 14.09.20 -------------------------------------- Susana Canel ------------------------------------------- ProdEntN_tb.vhdl
 -- TESTBENCH DEL PRODUCTO DE ENTEROS DE N BITS USANDO ARCHIVOS. MODIFICACION DEL ARCHIVO DE SALIDA.
 
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 use std.textio.all;                    
--------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------
 entity ProdEntN_tb is
 end entity ProdEntN_tb;
--------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------
 architecture Test of ProdEntN_tb is 
   ------------------------------------------------------
   component ProdEntN is
@@ -40,25 +40,25 @@ begin
     variable auxB              : integer;             
     variable auxP              : integer;             
 
-   --------- VARIABLES Y CONSTANTES PARA OBTENER EL ANCHO DE CADA COLUMNA DE LA TABLA DE SALIDA -------------------------
+   --------- VARIABLES Y CONSTANTES PARA OBTENER EL ANCHO DE CADA COLUMNA DE LA TABLA DE SALIDA ----------------------------
    
     constant ANCHOCOLUMNA_SEP  : positive := 4;
 
-    variable n                 : integer  := 2**(BITS-1);      -- valor absoluto del maximo negativo de un entero,
-                                                               -- con signo, rango: [-(2^n-1); (2^n-1)-1)]
-    variable cantCaract        : integer  := 1;                -- por lo menos se imprime un caracter
+    variable n                 : integer  := 2**(BITS-1);            -- valor absoluto del maximo negativo de un entero,
+                                                                     -- con signo, rango: [-(2^n-1); (2^n-1)-1)]
+    variable cantCaract        : integer  := 1;                      -- por lo menos se imprime un caracter
 
   begin
     report "Verificando el multiplicador de enteros de 8 bits, de -128 a +127"
     severity note;
-    ---------------------------------------------------------------------------------------------------------------------
+    ------------------------------------------------------------------------------------------------------------------------
 
-    while n >= 10 loop                                          -- comparo con la base que en este caso es decimal (10)
+    while n >= 10 loop                                               -- comparo con la base que en este caso es decimal (10)
       n          := n / 10; 
       cantCaract := cantCaract + 1; 
     end loop; 
 
-    ---------------------------------------------------------------------------------------------------------------------
+    ------------------------------------------------------------------------------------------------------------------------
     file_open( estado, inputhandle, "factores.txt", read_mode );               
     assert estado=open_ok
       report "No se pudo abrir el archivo con los datos"
@@ -68,17 +68,17 @@ begin
       report "No se pudo crear el archivo para escribir los resultados"
       severity failure;
 
-    write( buffer2, string'( "PRODUCTO DE ENTEROS DE 8 BITS" & LF));           -- LF: line feed, caracter predefinido
+    write( buffer2, string'( "PRODUCTO DE ENTEROS DE 8 BITS" & LF));         -- LF: line feed, caracter predefinido
     writeline( outputhandle, buffer2 );
 
-    write( buffer2, string'( "A"        ), right, cantCaract + 1);             -- +1 considera la impresion del signo '-'
+    write( buffer2, string'( "A"        ), right, cantCaract + 1);           -- +1 considera la impresion del signo '-'
     write( buffer2, string'("    "      ), right, ANCHOCOLUMNA_SEP );
     write( buffer2, string'( "B"        ), right, cantCaract + 1);
     write( buffer2, string'("    "      ), right, ANCHOCOLUMNA_SEP );
     write( buffer2, string'( "PRODUCTO" & LF ), right, (cantCaract*2) + 1 ); -- considera: doble de caracteres p/el producto
     writeline( outputhandle, buffer2 );
 
-    ---------------------------------------------------------------------------------------------------------------------
+    ------------------------------------------------------------------------------------------------------------------------
     while not( endfile( inputhandle )) loop
       readline( inputhandle, buffer1 );   
       read( buffer1, auxA );
@@ -111,7 +111,7 @@ begin
         severity failure;        
 
     end loop;	
-    -------------------------------------------------------------------------------------------------------------------
+    ------------------------------------------------------------------------------------------------------------------------
 
     file_close(  inputhandle );                                    -- cierre de archivos
     file_close( outputhandle );
@@ -121,4 +121,4 @@ begin
     wait;	
   end process Prueba;
 end architecture Test;
--------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------
