@@ -7,14 +7,14 @@ entity ContAnillo_tb is
 end entity ContAnillo_tb;
 ---------------------------------------------------------------------------
 architecture Test of ContAnillo_tb is
-   ------------------------------------------------------
+   ----------------------------------------------------
    component ContAnillo is
    generic(N     : positive := 6);
    port   (clk_i : in  std_logic; 
            rst_i : in  std_logic; 					 
            q_o   : out std_logic_vector(N-1 downto 0)); 
    end component ContAnillo;
-   ------------------------------------------------------
+   ----------------------------------------------------
    signal   clk_t      : std_logic :='1';
    signal   rst_t      : std_logic :='1';
    signal   q_t        : std_logic_vector(5 downto 0);
@@ -39,13 +39,13 @@ begin
 
    Prueba: 		 
    process begin
-      report "Verificando contador en anillo arranque automatico, de 6 bits"
+      report "Verificando contador en anillo, arranque automatico, de 6 bits"
       severity note;
 		
       wait until rst_t='0';  
-      wait for 5 ns;			   -- genera ts
+      wait for 5 ns;			             -- genera ts
       wait until rising_edge(clk_t);
-      wait for 2 ns;		           -- espera tp  	           		           
+      wait for 2 ns;		               -- espera tp  	           		           
       assert q_t="010000"
          report "Falla q para q=010000" 
          severity failure;
@@ -143,4 +143,5 @@ begin
 end architecture Test;
 ---------------------------------------------------------------------------
 
+ 
  

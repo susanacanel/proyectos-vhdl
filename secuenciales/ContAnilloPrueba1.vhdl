@@ -1,18 +1,18 @@
--- 13.03.20 ------- Susana Canel ------ ContAnillo.vhdl
+-- 16.09.20 ---- Susana Canel ---- ContAnilloPrueba1.vhdl
 -- CONTADOR EN ANILLO CON ARRANQUE AUTOMATICO.
 
 library ieee;   
 use ieee.std_logic_1164.all;
--------------------------------------------------------
-entity ContAnillo is
+---------------------------------------------------------
+entity ContAnilloPrueba1 is
    generic(N     : positive := 6);
    port   (clk_i : in  std_logic; 
            rst_i : in  std_logic; 
            sel_i : in  std_logic_vector(1 downto 0);					 
            q_o   : out std_logic_vector(N-1 downto 0)); 
-end entity ContAnillo;
--------------------------------------------------------
-architecture Arq of ContAnillo is
+end entity ContAnilloPrueba1;
+---------------------------------------------------------
+architecture Arq of ContAnilloPrueba1 is
    signal auxQ : std_logic_vector(N-1 downto 0); 
    signal q    : std_logic;
 begin
@@ -49,5 +49,5 @@ AutoCorreccion:
    q_o <= auxQ;
 	
 end architecture Arq;
--------------------------------------------------------
+---------------------------------------------------------
  
