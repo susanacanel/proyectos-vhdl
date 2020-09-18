@@ -147,3 +147,4 @@ El contenido de este repositorio es material complementario de una serie de vide
 - [110. Descripción, testbench y simulación: sumador serie de los N 1eros. nros. naturales.](https://www.youtube.com/watch?v=HluGz2zQ5eU)
 - [111. Testbench que usa archivos para leer los datos y para escribir los resultados.](https://www.youtube.com/watch?v=Ticf5ia-rs8)
 - [112. Testbench manejo de archivos, 2da. parte. Poniendo prolijo el archivo de salida.](https://www.youtube.com/watch?v=24gD3Q2TkhI)
+- [113. Testbench. Genera archivo de salida de formato compatible con planilla electrónica.](https://www.youtube.com/watch?v=oICeLzY5nYY&feature=youtu.be)

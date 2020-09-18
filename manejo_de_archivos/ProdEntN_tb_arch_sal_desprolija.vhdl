@@ -1,4 +1,4 @@
--- 12.09.20 ------------------------------------ Susana Canel ------------------------------------------ ProdEntN_tb.vhdl
+-- 12.09.20 ------------------------------------ Susana Canel ------------------------------------------ ProdEntN_tb_arch_sal_desprolija.vhdl
 -- TESTBENCH DEL PRODUCTO DE ENTEROS DE N BITS USANDO ARCHIVOS.
 
 library ieee;
@@ -8,10 +8,10 @@ use std.textio.all;                    -- "package" para usar las funciones y ti
                                        -- esta en la "library std", no es necesario declarar esta "library"
 
 -------------------------------------------------------------------------------------------------------------------------
-entity ProdEntN_tb is
-end entity ProdEntN_tb;
+entity ProdEntN_tb_arch_sal_desprolija is
+end entity ProdEntN_tb_arch_sal_desprolija;
 -------------------------------------------------------------------------------------------------------------------------
-architecture Test of ProdEntN_tb is 
+architecture Test of ProdEntN_tb_arch_sal_desprolija is 
   ------------------------------------------------------
   component ProdEntN is
     generic(N    : positive  := 3);
