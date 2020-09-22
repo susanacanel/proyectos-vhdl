@@ -4,12 +4,12 @@
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
-use std.textio.all;                    
+use std.textio.all;
 ----------------------------------------------------------------------------------------------------------------------------
 entity ProdEntN_tb_arch_sal_prolija is
 end entity ProdEntN_tb_arch_sal_prolija;
 ----------------------------------------------------------------------------------------------------------------------------
-architecture Test of ProdEntN_tb_arch_sal_prolija is 
+architecture Test of ProdEntN_tb_arch_sal_prolija is
   ------------------------------------------------------
   component ProdEntN is
     generic(N    : positive  := 3);
@@ -22,26 +22,26 @@ architecture Test of ProdEntN_tb_arch_sal_prolija is
   signal   a_t           : std_logic_vector(  BITS-1 downto 0) := (others=>'0');
   signal   b_t           : std_logic_vector(  BITS-1 downto 0) := (others=>'0');
   signal   p_t           : std_logic_vector(2*BITS-1 downto 0);
-  file     inputhandle   : text;             
-  file     outputhandle  : text;             
+  file     inputhandle   : text;
+  file     outputhandle  : text;
 
 begin
   dut: ProdEntN generic map(N    =>  BITS)
                 port    map(a_i  =>  a_t,
                             b_i  =>  b_t,
                             p_o  =>  p_t);
-  Prueba: 
+  Prueba:
   process is
-    variable numeroDeLinea     : integer := 0;        
-    variable estado            : file_open_status;    
-    variable buffer1           : line;                
-    variable buffer2           : line;                
-    variable auxA              : integer;             
-    variable auxB              : integer;             
-    variable auxP              : integer;             
+    variable numeroDeLinea     : integer := 0;
+    variable estado            : file_open_status;
+    variable buffer1           : line;
+    variable buffer2           : line;
+    variable auxA              : integer;
+    variable auxB              : integer;
+    variable auxP              : integer;
 
    --------- VARIABLES Y CONSTANTES PARA OBTENER EL ANCHO DE CADA COLUMNA DE LA TABLA DE SALIDA ----------------------------
-   
+
     constant ANCHOCOLUMNA_SEP  : positive := 4;
 
     variable n                 : integer  := 2**(BITS-1);            -- valor absoluto del maximo negativo de un entero,
@@ -54,16 +54,16 @@ begin
     ------------------------------------------------------------------------------------------------------------------------
 
     while n >= 10 loop                                               -- comparo con la base que en este caso es decimal (10)
-      n          := n / 10; 
-      cantCaract := cantCaract + 1; 
-    end loop; 
+      n          := n / 10;
+      cantCaract := cantCaract + 1;
+    end loop;
 
     ------------------------------------------------------------------------------------------------------------------------
-    file_open( estado, inputhandle, "factores.txt", read_mode );               
+    file_open( estado, inputhandle, "factores.txt", read_mode );
     assert estado=open_ok
       report "No se pudo abrir el archivo con los datos"
       severity failure;
-    file_open( estado, outputhandle, "productos.txt", write_mode );            
+    file_open( estado, outputhandle, "productos.txt", write_mode );
     assert estado=open_ok
       report "No se pudo crear el archivo para escribir los resultados"
       severity failure;
@@ -80,37 +80,37 @@ begin
 
     ------------------------------------------------------------------------------------------------------------------------
     while not( endfile( inputhandle )) loop
-      readline( inputhandle, buffer1 );   
+      readline( inputhandle, buffer1 );
       read( buffer1, auxA );
       read( buffer1, auxB );
       read( buffer1, auxP );
-                                                                       
+
       a_t <= std_logic_vector( to_signed( auxA, a_t'length ));
       b_t <= std_logic_vector( to_signed( auxB, b_t'length ));
       wait for 2 ns;
 
-      write( buffer2, integer'image ( auxA ), right, cantCaract + 1);   
+      write( buffer2, integer'image ( auxA ), right, cantCaract + 1);
       write( buffer2, string' (" ")         , right, ANCHOCOLUMNA_SEP );
-      write( buffer2, integer'image ( auxB ), right, cantCaract + 1);   
+      write( buffer2, integer'image ( auxB ), right, cantCaract + 1);
       write( buffer2, string' (" ")         , right, ANCHOCOLUMNA_SEP );
-      write( buffer2, integer'image ( auxP ), right, (cantCaract*2) + 1); 
+      write( buffer2, integer'image ( auxP ), right, (cantCaract*2) + 1);
       writeline ( outputhandle, buffer2 );
 
       numeroDeLinea := numeroDeLinea + 1;
       assert to_integer ( signed ( p_t )) = auxP
         report "Error en la linea "
-        & integer'image ( numeroDeLinea ) 
-        & ". El producto calculado es " 
-        & integer'image (to_integer (signed ( p_t ))) 
-        & " para A = " 
-        & integer'image (to_integer (signed ( a_t )))  
-        & " y B = " 
+        & integer'image ( numeroDeLinea )
+        & ". El producto calculado es "
+        & integer'image (to_integer (signed ( p_t )))
+        & " para A = "
+        & integer'image (to_integer (signed ( a_t )))
+        & " y B = "
         & integer'image (to_integer (signed ( b_t )))
-        & " y deberia ser " 
+        & " y deberia ser "
         & integer'image ( auxP )
-        severity failure;        
+        severity failure;
 
-    end loop;	
+    end loop;
     ------------------------------------------------------------------------------------------------------------------------
 
     file_close(  inputhandle );                                    -- cierre de archivos
@@ -118,7 +118,7 @@ begin
 
     report "Verificacion exitosa!"
     severity note;
-    wait;	
+    wait;
   end process Prueba;
 end architecture Test;
 ----------------------------------------------------------------------------------------------------------------------------

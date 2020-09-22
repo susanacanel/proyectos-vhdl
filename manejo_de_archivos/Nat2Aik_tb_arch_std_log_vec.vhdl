@@ -30,10 +30,10 @@ begin
     variable buffer1       : line;
     variable buffer2       : line;
     variable stringN       : string(1 to 4);
-    variable stringA       : string(1 to 4); 
+    variable stringA       : string(1 to 4);
     variable stdLogVectN   : std_logic_vector(3 downto 0);
     variable stdLogVectA   : std_logic_vector(3 downto 0);
-    variable espacio       : character;  
+    variable espacio       : character;
     constant ANCHO         : positive := 7;
   begin
     report "Probando el conversor de BCD natural a BCD Aiken"
@@ -58,7 +58,7 @@ begin
     write(buffer2, string'("______________________") & LF);
     writeline(outputHandle, buffer2);
     ----------------------------------------------------------------------------
-    -- El "read" de un string no "gasta" los espacios en blanco como si lo hacen 
+    -- El "read" de un string no "gasta" los espacios en blanco como si lo hacen
     -- los "read" de enteros, booleans, etc.
     -- (Es logico, uno podria querer leer un string con espacios antes o despues)
     -- Por eso hay que leer el espacio separador antes de leer el ultimo string.
@@ -106,7 +106,7 @@ begin
           when others => stdLogVectA(4 - i) := 'X';
         end case;
       end loop;
-      
+
       numeroDeLinea := numeroDeLinea + 1;
       assert a_t = stdLogVectA
         report "Error en la linea "
