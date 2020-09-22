@@ -1,4 +1,4 @@
--- 14.09.20 -------------------------------------- Susana Canel ------------------------------------------- ProdEntN_tb_arch_sal_prolija.vhdl
+-- 14.09.20 -------------------------------------- Susana Canel ------------------------------------------- tb_ProdEntN_arch_sal_prolija.vhdl
 -- TESTBENCH DEL PRODUCTO DE ENTEROS DE N BITS USANDO ARCHIVOS. MODIFICACION DEL ARCHIVO DE SALIDA.
 
 library ieee;
@@ -6,10 +6,10 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 use std.textio.all;
 ----------------------------------------------------------------------------------------------------------------------------
-entity ProdEntN_tb_arch_sal_prolija is
-end entity ProdEntN_tb_arch_sal_prolija;
+entity tb_ProdEntN_arch_sal_prolija is
+end entity tb_ProdEntN_arch_sal_prolija;
 ----------------------------------------------------------------------------------------------------------------------------
-architecture Test of ProdEntN_tb_arch_sal_prolija is
+architecture Test of tb_ProdEntN_arch_sal_prolija is
   ------------------------------------------------------
   component ProdEntN is
     generic(N    : positive  := 3);

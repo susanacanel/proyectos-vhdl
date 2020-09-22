@@ -1,4 +1,4 @@
--- 14.09.20 ----------------------------------- Susana Canel ----------------------------------- ProdEntN_tb_arch_excel.vhdl
+-- 14.09.20 ----------------------------------- Susana Canel ----------------------------------- tb_ProdEntN_arch_excel.vhdl
 -- TESTBENCH DEL PRODUCTO DE ENTEROS DE N BITS USANDO ARCHIVOS. GENERACION DE UN ARCHIVO DE SALIDA CON FORMATO
 -- COMPATIBLE CON UNA PLANILLA ELECTRONICA COMO, POR EJEMPLO, MICROSOFT OFFICE EXCEL.
 
@@ -7,10 +7,10 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 use std.textio.all;
 ----------------------------------------------------------------------------------------------------------------------------
-entity ProdEntN_tb_arch_excel is
-end entity ProdEntN_tb_arch_excel;
+entity tb_ProdEntN_arch_excel is
+end entity tb_ProdEntN_arch_excel;
 ----------------------------------------------------------------------------------------------------------------------------
-architecture Test of ProdEntN_tb_arch_excel is
+architecture Test of tb_ProdEntN_arch_excel is
   ------------------------------------------------------
   component ProdEntN is
     generic(N    : positive  := 3);

@@ -1,4 +1,4 @@
--- 21.09.20 ----------------- Susana Canel ----------------- Nat2Aik_tb_2.vhdl
+-- 21.09.20 ----------------- Susana Canel ----------------- tb_Nat2Aik_2.vhdl
 -- TESTBENCH DEL CONVERSOR DE BCD NATURAL A BCD AIKEN. USANDO DATOS DE
 -- TIPO BIT_VECTOR.
 library ieee;
@@ -6,10 +6,10 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 use std.textio.all;
 ----------------------------------------------------------------------------
-entity Nat2Aik_tb_2 is
-end entity Nat2Aik_tb_2;
+entity tb_Nat2Aik_2 is
+end entity tb_Nat2Aik_2;
 ----------------------------------------------------------------------------
-architecture Test of Nat2Aik_tb_2 is
+architecture Test of tb_Nat2Aik_2 is
    ---------------------------------------------------
    component Nat2Aik_2 is
       port(n_i	 : in  std_logic_vector(3 downto 0);

@@ -1,4 +1,4 @@
--- 25.09.20 ------------------ Susana Canel ------------------ Nat2Aik_tb_arch_std_log_vec.vhdl
+-- 25.09.20 ------------------ Susana Canel ------------------ tb_Nat2Aik_arch_std_log_vec.vhdl
 -- TESTBENCH DEL CONVERSOR DE BCD NATURAL A BCD AIKEN. USA ARCHIVOS CON DATOS
 -- DE TIPO STD_LOGIC_VECTOR.
 library ieee;
@@ -6,10 +6,10 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 use std.textio.all;
 --------------------------------------------------------------------------------
-entity Nat2Aik_tb_arch_std_log_vec is
-end entity Nat2Aik_tb_arch_std_log_vec;
+entity tb_Nat2Aik_arch_std_log_vec is
+end entity tb_Nat2Aik_arch_std_log_vec;
 --------------------------------------------------------------------------------
-architecture Test of Nat2Aik_tb_arch_std_log_vec is
+architecture Test of tb_Nat2Aik_arch_std_log_vec is
   --------------------------------------------------
   component Nat2Aik_2 is
     port (n_i   : in  std_logic_vector(3 downto 0);
