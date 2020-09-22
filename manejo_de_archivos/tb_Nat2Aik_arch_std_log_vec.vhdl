@@ -1,14 +1,28 @@
 -- 25.09.20 ------------------ Susana Canel ------------------ tb_Nat2Aik_arch_std_log_vec.vhdl
 -- TESTBENCH DEL CONVERSOR DE BCD NATURAL A BCD AIKEN. USA ARCHIVOS CON DATOS
 -- DE TIPO STD_LOGIC_VECTOR.
+use std.textio.all;
+
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
-use std.textio.all;
+
+library vunit_lib;
+context vunit_lib.vunit_context;
+
 --------------------------------------------------------------------------------
+
 entity tb_Nat2Aik_arch_std_log_vec is
+  generic (
+    runner_cfg : string;
+    tb_path    : string;
+    txt_bcd    : string := "bcd-naturales_2.txt";
+    txt_aiken  : string := "bcd-aiken.txt"
+  );
 end entity tb_Nat2Aik_arch_std_log_vec;
+
 --------------------------------------------------------------------------------
+
 architecture Test of tb_Nat2Aik_arch_std_log_vec is
   --------------------------------------------------
   component Nat2Aik_2 is
@@ -36,14 +50,16 @@ begin
     variable espacio       : character;
     constant ANCHO         : positive := 7;
   begin
+    test_runner_setup(runner, runner_cfg);
+
     report "Probando el conversor de BCD natural a BCD Aiken"
     severity note;
     ----------------------------------------------------------------------------
-    file_open(estado, inputhandle, "bcd-naturales_2.txt", read_mode);
+    file_open(estado, inputhandle, tb_path & txt_bcd, read_mode);
     assert estado = open_ok
       report "No se pudo abrir el archivo con los datos"
       severity failure;
-    file_open(estado, outputhandle, "bcd-aiken.txt", write_mode);
+    file_open(estado, outputhandle, tb_path & txt_aiken, write_mode);
     assert estado = open_ok
       report "No se pudo crear el archivo para escribir los resultados"
       severity failure;
@@ -125,6 +141,7 @@ begin
 
     report "Prueba exitosa!"
       severity note;
+    test_runner_cleanup(runner);
     wait;
   end process Prueba;
 end architecture Test;

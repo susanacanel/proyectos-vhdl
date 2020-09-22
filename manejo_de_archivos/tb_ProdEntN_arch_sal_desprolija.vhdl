@@ -1,15 +1,26 @@
 -- 12.09.20 ------------------------------------ Susana Canel ------------------------------------------ tb_ProdEntN_arch_sal_desprolija.vhdl
 -- TESTBENCH DEL PRODUCTO DE ENTEROS DE N BITS USANDO ARCHIVOS.
+use std.textio.all;                    -- "package" para usar las funciones y tipos para manejar archivos
+                                       -- esta en la "library std", no es necesario declarar esta "library"
 
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
-use std.textio.all;                    -- "package" para usar las funciones y tipos para manejar archivos
-                                       -- esta en la "library std", no es necesario declarar esta "library"
+
+library vunit_lib;
+context vunit_lib.vunit_context;
 
 -------------------------------------------------------------------------------------------------------------------------
+
 entity tb_ProdEntN_arch_sal_desprolija is
+  generic (
+    runner_cfg : string;
+    tb_path    : string;
+    txt_i      : string := "factores.txt";
+    txt_o      : string := "productos.txt"
+  );
 end entity tb_ProdEntN_arch_sal_desprolija;
+
 -------------------------------------------------------------------------------------------------------------------------
 architecture Test of tb_ProdEntN_arch_sal_desprolija is
   ------------------------------------------------------
@@ -60,6 +71,8 @@ begin
     constant ANCHOCOLUMNA_P    : positive := 8;
     constant ANCHOCOLUMNA_SEP  : positive := 4;
   begin
+    test_runner_setup(runner, runner_cfg);
+
     report "Verificando el multiplicador de enteros de 8 bits"
     severity note;
 
@@ -77,13 +90,13 @@ begin
     --           se pudo abrir un archivo existente para escribir a partir del final (append_mode)
     ----------------------------------------------------------------------------------------------------------------
 
-    file_open( estado, inputhandle, "factores.txt", read_mode );               -- en modo lectura
+    file_open( estado, inputhandle, tb_path & txt_i, read_mode );               -- en modo lectura
     assert estado=open_ok
       report "No se pudo abrir el archivo con los datos"
       severity failure;
 
 
-    file_open( estado, outputhandle, "productos.txt", write_mode );            -- en modo escritura
+    file_open( estado, outputhandle, tb_path & txt_o, write_mode );            -- en modo escritura
     assert estado=open_ok
       report "No se pudo crear el archivo para escribir los resultados"
       severity failure;
@@ -167,6 +180,7 @@ begin
 
     report "Verificacion exitosa!"
     severity note;
+    test_runner_cleanup(runner);
     wait;
   end process Prueba;
 end architecture Test;

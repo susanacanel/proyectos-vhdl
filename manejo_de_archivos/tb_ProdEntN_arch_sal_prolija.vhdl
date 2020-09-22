@@ -1,14 +1,27 @@
 -- 14.09.20 -------------------------------------- Susana Canel ------------------------------------------- tb_ProdEntN_arch_sal_prolija.vhdl
 -- TESTBENCH DEL PRODUCTO DE ENTEROS DE N BITS USANDO ARCHIVOS. MODIFICACION DEL ARCHIVO DE SALIDA.
+use std.textio.all;
 
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
-use std.textio.all;
+
+library vunit_lib;
+context vunit_lib.vunit_context;
+
 ----------------------------------------------------------------------------------------------------------------------------
+
 entity tb_ProdEntN_arch_sal_prolija is
+  generic (
+    runner_cfg : string;
+    tb_path    : string;
+    txt_i      : string := "factores.txt";
+    txt_o      : string := "productos.txt"
+  );
 end entity tb_ProdEntN_arch_sal_prolija;
+
 ----------------------------------------------------------------------------------------------------------------------------
+
 architecture Test of tb_ProdEntN_arch_sal_prolija is
   ------------------------------------------------------
   component ProdEntN is
@@ -49,6 +62,8 @@ begin
     variable cantCaract        : integer  := 1;                      -- por lo menos se imprime un caracter
 
   begin
+    test_runner_setup(runner, runner_cfg);
+
     report "Verificando el multiplicador de enteros de 8 bits, de -128 a +127"
     severity note;
     ------------------------------------------------------------------------------------------------------------------------
@@ -59,11 +74,11 @@ begin
     end loop;
 
     ------------------------------------------------------------------------------------------------------------------------
-    file_open( estado, inputhandle, "factores.txt", read_mode );
+    file_open( estado, inputhandle, tb_path & txt_i, read_mode );
     assert estado=open_ok
       report "No se pudo abrir el archivo con los datos"
       severity failure;
-    file_open( estado, outputhandle, "productos.txt", write_mode );
+    file_open( estado, outputhandle, tb_path & txt_o, write_mode );
     assert estado=open_ok
       report "No se pudo crear el archivo para escribir los resultados"
       severity failure;
@@ -118,6 +133,7 @@ begin
 
     report "Verificacion exitosa!"
     severity note;
+    test_runner_cleanup(runner);
     wait;
   end process Prueba;
 end architecture Test;

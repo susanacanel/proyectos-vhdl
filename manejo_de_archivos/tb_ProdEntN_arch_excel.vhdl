@@ -1,15 +1,28 @@
 -- 14.09.20 ----------------------------------- Susana Canel ----------------------------------- tb_ProdEntN_arch_excel.vhdl
 -- TESTBENCH DEL PRODUCTO DE ENTEROS DE N BITS USANDO ARCHIVOS. GENERACION DE UN ARCHIVO DE SALIDA CON FORMATO
 -- COMPATIBLE CON UNA PLANILLA ELECTRONICA COMO, POR EJEMPLO, MICROSOFT OFFICE EXCEL.
+use std.textio.all;
 
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
-use std.textio.all;
+
+library vunit_lib;
+context vunit_lib.vunit_context;
+
 ----------------------------------------------------------------------------------------------------------------------------
+
 entity tb_ProdEntN_arch_excel is
+  generic (
+    runner_cfg : string;
+    tb_path    : string;
+    txt_i      : string := "factores3.txt";
+    xls_o      : string := "productos.xls"
+  );
 end entity tb_ProdEntN_arch_excel;
+
 ----------------------------------------------------------------------------------------------------------------------------
+
 architecture Test of tb_ProdEntN_arch_excel is
   ------------------------------------------------------
   component ProdEntN is
@@ -42,14 +55,16 @@ begin
     variable auxP              : integer;
 
   begin
+    test_runner_setup(runner, runner_cfg);
+
     report "Verificando el multiplicador de enteros de 8 bits, de -128 a +127"
     severity note;
     ------------------------------------------------------------------------------------------------------------------------
-    file_open( estado, inputhandle, "factores3.txt", read_mode );
+    file_open( estado, inputhandle, tb_path & txt_i, read_mode );
     assert estado=open_ok
       report "No se pudo abrir el archivo con los datos"
       severity failure;
-    file_open( estado, outputhandle, "productos.xls", write_mode );   -- archivo de salida con extension para planilla excel
+    file_open( estado, outputhandle, tb_path & xls_o, write_mode );   -- archivo de salida con extension para planilla excel
     assert estado=open_ok
       report "No se pudo crear el archivo para escribir los resultados"
       severity failure;
@@ -100,6 +115,7 @@ begin
 
     report "Verificacion exitosa!"
     severity note;
+    test_runner_cleanup(runner);
     wait;
   end process Prueba;
 end architecture Test;
