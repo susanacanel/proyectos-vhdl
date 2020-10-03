@@ -151,3 +151,5 @@ El contenido de este repositorio es material complementario de una serie de vide
 - [114. Utilizando el shell Bash para generar el archivo de entrada al testbench.](https://www.youtube.com/watch?v=7fgOw2_bedk&feature=youtu.be)
 - [115. Testbench: archivos con datos de tipo bit_vector, problemas detectados.](https://www.youtube.com/watch?v=ReKqCeJ3Xkw&feature=youtu.be)
 - [116. Testbench: que usa archivos y datos string y std_logic_vector. Conversión de datos.](https://www.youtube.com/watch?v=jHhFgJ90Hzo&feature=youtu.be)
+- [117. Testbench con una función declarada dentro del código.](https://www.youtube.com/watch?v=wWwfdA3fPEc&feature=youtu.be)
+- [118. Declarando una función en  un package y compilando todo con GHDL y con ModelSim.](https://www.youtube.com/watch?v=69mzp_kVM4I&feature=youtu.be)

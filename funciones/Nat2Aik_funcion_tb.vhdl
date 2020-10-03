@@ -1,4 +1,4 @@
--- 01.10.20 --------------- Susana Canel ------------- tb_Nat2Aik_funcion_1.vhdl
+-- 01.10.20 --------------- Susana Canel ------------- Nat2Aik_funcion_tb.vhdl
 -- TESTBENCH DEL CONVERSOR DE BCD NATURAL A BCD AIKEN. USA ARCHIVOS Y DEFINE
 -- UNA FUNCION PARA HACER LA CONVERSION DE LOS DATOS TIPO STRING A 
 -- STD_LOGIC_VECTOR USANDO UNA FUNCION.
@@ -7,10 +7,10 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 use std.textio.all;
 --------------------------------------------------------------------------------
-entity tb_Nat2Aik_funcion_1 is
-end entity tb_Nat2Aik_funcion_1;
+entity Nat2Aik_funcion_tb is
+end entity Nat2Aik_funcion_tb;
 --------------------------------------------------------------------------------
-architecture Test of tb_Nat2Aik_funcion_1 is
+architecture Test of Nat2Aik_funcion_tb is
   --------------------------------------------------
   component Nat2Aik_2 is
     port (n_i   : in  std_logic_vector(3 downto 0);

@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-for sdir in combinacionales secuenciales manejo_de_archivos; do
+for sdir in combinacionales secuenciales manejo_de_archivos funciones; do
   echo "::group::Import all sources from '$sdir'"
   ghdl -i "$sdir"/*.vhdl
   echo '::endgroup::'
