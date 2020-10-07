@@ -6,9 +6,9 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 use std.textio.all;
-use work.MiPackage.all;    -- yo voy a usar el Package "MiPackage" que esta 
-                           -- en la carpeta MiBiblioteca, con GHDL (en mi caso):
-                     -- ghdl -a ../../libraries/vhdl/MiBiblioteca/MiPackage.vhdl
+use work.miPackage.all;    -- yo voy a usar el Package "miPackage" que esta 
+                           -- en la carpeta miBiblioteca, con GHDL (en mi caso):
+                     -- ghdl -a ../../libraries/vhdl/MiBiblioteca/miPackage.vhdl
 --------------------------------------------------------------------------------
 entity Nat2Aik_func_pack_tb is
 end entity Nat2Aik_func_pack_tb;

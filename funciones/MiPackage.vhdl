@@ -1,9 +1,9 @@
--- 02.10.20 --------------------- Susana Canel -------------------- MiPackage.vhdl
+-- 02.10.20 --------------------- Susana Canel -------------------- miPackage.vhdl
 library ieee;
 use ieee.std_logic_1164.all;
 
 -------------------------- PARTE DECLARATIVA DEL PACKAGE -------------------------
-package MiPackage is
+package miPackage is
 
 	--------------------------------------------------------------------------------
 	component CompNANDn is
@@ -60,11 +60,11 @@ package MiPackage is
                           return        std_logic_vector;
   --------------------------------------------------------------------------------
 
-end package MiPackage;
+end package miPackage;
 
 ----------------------------- CUERPO DEL PACKAGE ---------------------------------
 
-package body MiPackage is
+package body miPackage is
 
   --------------------------------------------------------------------------------
   -- to_stdLogVect
@@ -95,5 +95,5 @@ package body MiPackage is
   end function to_stdLogVect;
   --------------------------------------------------------------------------------  
 
-end package body MiPackage;
+end package body miPackage;
 ----------------------------------------------------------------------------------
