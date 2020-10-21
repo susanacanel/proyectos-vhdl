@@ -153,3 +153,6 @@ El contenido de este repositorio es material complementario de una serie de vide
 - [116. Testbench: que usa archivos y datos string y std_logic_vector. Conversión de datos.](https://www.youtube.com/watch?v=jHhFgJ90Hzo&feature=youtu.be)
 - [117. Testbench con una función declarada dentro del código.](https://www.youtube.com/watch?v=wWwfdA3fPEc&feature=youtu.be)
 - [118. Declarando una función en  un package y compilando todo con GHDL y con ModelSim.](https://www.youtube.com/watch?v=69mzp_kVM4I&feature=youtu.be)
+- [119. Testbench. Uso de procedimientos. Declaración en package. Diferencias con funciones](https://www.youtube.com/watch?v=50LvJMOjhHw&feature=youtu.be)
+- [120. Testbench del sumador serie usado para generar la tabla del 7. Graba un archivo.](https://www.youtube.com/watch?v=7a47T0Da4yw&feature=youtu.be)
+- [121. Divisor de frecuencia, genera dos frecuencias, 200Hz y 1Hz. Ejecución en plaqueta.](https://www.youtube.com/watch?v=33hjODspUOY&feature=youtu.be)
