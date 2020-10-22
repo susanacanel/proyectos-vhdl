@@ -156,3 +156,5 @@ El contenido de este repositorio es material complementario de una serie de vide
 - [119. Testbench. Uso de procedimientos. Declaración en package. Diferencias con funciones](https://www.youtube.com/watch?v=50LvJMOjhHw&feature=youtu.be)
 - [120. Testbench del sumador serie usado para generar la tabla del 7. Graba un archivo.](https://www.youtube.com/watch?v=7a47T0Da4yw&feature=youtu.be)
 - [121. Divisor de frecuencia, genera dos frecuencias, 200Hz y 1Hz. Ejecución en plaqueta.](https://www.youtube.com/watch?v=33hjODspUOY&feature=youtu.be)
+- [122. 1era.Parte: diseño estructural sincrónico, sumador serie. Ejecución en la plaqueta.](https://www.youtube.com/watch?v=xB50UYudInw&feature=youtu.be)
+- [123. Testbench del 1er. bloque del sumador serie. Análisis de la simulación.](https://www.youtube.com/watch?v=EJFYxRDzGOs&feature=youtu.be)
