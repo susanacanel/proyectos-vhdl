@@ -85,6 +85,13 @@ package miPackage is
           valido_o : out std_logic);
   end component antirreboteValida;
   --------------------------------------------------------------------------------
+  component antirreboteValida1 is
+    port (clk_i    : in  std_logic;
+          rst_i    : in  std_logic;
+          boton_i  : in  std_logic;
+          valido_o : out std_logic);
+  end component antirreboteValida1;
+  --------------------------------------------------------------------------------
   component binBCD is
     port (num_i              : in  std_logic_vector(3 downto 0);
           bcdEmpaquetado_o   : out std_logic_vector(7 downto 0));
