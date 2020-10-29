@@ -158,3 +158,4 @@ El contenido de este repositorio es material complementario de una serie de vide
 - [121. Divisor de frecuencia, genera dos frecuencias, 200Hz y 1Hz. Ejecución en plaqueta.](https://www.youtube.com/watch?v=33hjODspUOY&feature=youtu.be)
 - [122. 1era.Parte: diseño estructural sincrónico, sumador serie. Ejecución en la plaqueta.](https://www.youtube.com/watch?v=xB50UYudInw&feature=youtu.be)
 - [123. Testbench del 1er. bloque del sumador serie. Análisis de la simulación.](https://www.youtube.com/watch?v=EJFYxRDzGOs&feature=youtu.be)
+- [124. Descripción como máquina de estado, testbench y simulación de un sumador serie.](https://www.youtube.com/watch?v=xCV512F2HLo&feature=youtu.be)
