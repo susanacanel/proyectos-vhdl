@@ -159,3 +159,4 @@ El contenido de este repositorio es material complementario de una serie de vide
 - [122. 1era.Parte: diseño estructural sincrónico, sumador serie. Ejecución en la plaqueta.](https://www.youtube.com/watch?v=xB50UYudInw&feature=youtu.be)
 - [123. Testbench del 1er. bloque del sumador serie. Análisis de la simulación.](https://www.youtube.com/watch?v=EJFYxRDzGOs&feature=youtu.be)
 - [124. Descripción como máquina de estado, testbench y simulación de un sumador serie.](https://www.youtube.com/watch?v=xCV512F2HLo&feature=youtu.be)
+- [125. Diseño estructural: divisor de frecuencia, antirrebote, sumador serie. Ejecución.](https://www.youtube.com/watch?v=JAD5nL3mIng&feature=youtu.be)
