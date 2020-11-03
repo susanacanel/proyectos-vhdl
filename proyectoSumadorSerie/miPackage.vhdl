@@ -1,4 +1,4 @@
--- 12.10.20 --------------------- Susana Canel -------------------- miPackage.vhdl
+-- 30.10.20 --------------------- Susana Canel -------------------- miPackage.vhdl
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
@@ -11,13 +11,13 @@ package miPackage is
 	component CompNANDn is
 		generic(N          : positive := 4);
 		port   (entrada_i  : in  std_logic_vector(N-1 downto 0);
-				    salida_o   : out std_logic);
+				salida_o   : out std_logic);
 	end component CompNANDn;
 	--------------------------------------------------------------------------------
 	component CompNORn is
 		generic(N          : positive := 4);
 		port   (entrada_i  : in  std_logic_vector(N-1 downto 0);
-				    salida_o   : out std_logic);
+				salida_o   : out std_logic);
 	end component CompNORn;
 	--------------------------------------------------------------------------------
   component CompMagN is
@@ -73,10 +73,26 @@ package miPackage is
             a_i            : in  std_logic_vector(N-1 downto 0);
             b_i            : in  std_logic_vector(N-1 downto 0);
             suma_o         : out std_logic_vector(N-1 downto 0);
+            a_o            : out std_logic_vector(N-1 downto 0);           
             ledSuma_o      : out std_logic;
             ledError_o     : out std_logic;           
             ledAcarreo_o   : out std_logic);
   end component sumSerie5;  
+  --------------------------------------------------------------------------------  
+  component sumSerie6 is
+    generic(N              : positive := 4);
+    port   (clk_i          : in  std_logic;
+            rst_i          : in  std_logic;   
+            pe_i           : in  std_logic;
+            a_i            : in  std_logic_vector(N-1 downto 0);
+            b_i            : in  std_logic_vector(N-1 downto 0);
+            suma_o         : out std_logic_vector(N-1 downto 0);
+            a_o            : out std_logic_vector(N-1 downto 0); 
+            b_o            : out std_logic_vector(N-1 downto 0);
+            ledSuma_o      : out std_logic;
+            ledError_o     : out std_logic;           
+            ledAcarreo_o   : out std_logic);
+  end component sumSerie6;  
   --------------------------------------------------------------------------------
   component antirreboteValida is
     port (clk_i    : in  std_logic;
@@ -85,16 +101,9 @@ package miPackage is
           valido_o : out std_logic);
   end component antirreboteValida;
   --------------------------------------------------------------------------------
-  component antirreboteValida1 is
-    port (clk_i    : in  std_logic;
-          rst_i    : in  std_logic;
-          boton_i  : in  std_logic;
-          valido_o : out std_logic);
-  end component antirreboteValida1;
-  --------------------------------------------------------------------------------
   component binBCD is
-    port (num_i              : in  std_logic_vector(3 downto 0);
-          bcdEmpaquetado_o   : out std_logic_vector(7 downto 0));
+    port (num_i        : in  std_logic_vector(3 downto 0);
+          bcdEmpaq_o   : out std_logic_vector(7 downto 0));
   end component binBCD;
   --------------------------------------------------------------------------------
   component display7seg is
@@ -108,6 +117,22 @@ package miPackage is
          dig3_o    : out std_logic_vector(6 downto 0));
   end component display7seg;
   --------------------------------------------------------------------------------  
+  component sumSerieCir3 is
+    port(clk_i     : in  std_logic;
+         rst_i     : in  std_logic;   
+         boton_i   : in  std_logic;           
+         a_i       : in  std_logic_vector(3 downto 0); 
+         b_i       : in  std_logic_vector(3 downto 0); 
+         s_o       : out std_logic_vector(3 downto 0); 
+         led_o     : out std_logic;  
+         noBCD_o   : out std_logic;
+         c_o       : out std_logic;
+           ledV0_o    : out std_logic;
+           ledV1_o    : out std_logic;
+           ledV2_o    : out std_logic;
+           ledV3_o    : out std_logic);
+  end component sumSerieCir3;  
+  -------------------------------------------------------------------------------- 
   function to_stdLogVect( stringC     : string ) 
                           return        std_logic_vector;
   --------------------------------------------------------------------------------
