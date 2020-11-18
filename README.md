@@ -162,3 +162,4 @@ El contenido de este repositorio es material complementario de una serie de vide
 - [125. Diseño estructural: divisor de frecuencia, antirrebote, sumador serie. Ejecución.](https://www.youtube.com/watch?v=JAD5nL3mIng&feature=youtu.be)
 - [126.Diseño estructural, sum.serie, div. frec, antirrebote, conversores bin2BCD, BCD-7seg](https://www.youtube.com/watch?v=6wQs7-2lPW8&feature=youtu.be)
 - [127. Descripción de una memoria estática, sincrónica, SRAM. Ejecución en la plaqueta DE1](https://www.youtube.com/watch?v=rpFgFT7pwrc&feature=youtu.be)
+- [128. Descripción: memoria estática sincrónica con bus de datos bidireccional, SRAM. DE1.](https://www.youtube.com/watch?v=znC__UqGoog&feature=youtu.be)
