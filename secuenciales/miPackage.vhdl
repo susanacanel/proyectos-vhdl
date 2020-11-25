@@ -1,4 +1,4 @@
--- 13.11.20 --------------------- Susana Canel -------------------- miPackage.vhdl
+-- 25.11.20 --------------------- Susana Canel -------------------- miPackage.vhdl
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
@@ -133,17 +133,6 @@ package miPackage is
          ledV3_o   : out std_logic);
   end component sumSerieCir3;  
   ------------------------------------------------------------------------------------------------------------------------ 
-  component sram_io is
-    generic(DIREC  : positive := 4; 	    -- 4 lineas direccionan, 2^4=16 palabras
-            BITS   : positive := 4);        -- 4 bits por palabra
-    port   (clk_i  : in    std_logic;
-		    dir_i  : in    std_logic_vector(DIREC-1 downto 0);
-	        oe_i   : in    std_logic;
-	        we_i   : in    std_logic;	
-	        cs_i   : in    std_logic;
-	        dat_io : inout std_logic_vector(BITS-1 downto 0));
-  end component sram_io;
-  ------------------------------------------------------------------------------------------------------------------------  
   function to_stdLogVect( stringC  : string ) 
                           return     std_logic_vector;
   ------------------------------------------------------------------------------------------------------------------------
@@ -155,17 +144,17 @@ package miPackage is
                           signal   we_t    : inout std_logic;
                           signal   dat_t   : inout std_logic_vector);  
   ------------------------------------------------------------------------------------------------------------------------
-  procedure lee_sram (constant direc   : integer;
+  procedure lee_sram (constant direc   : in    integer;               -- "in" por omision la clase es "constant"
                       signal   clk_t   : in    std_logic;
-                      signal   dir_t   : inout std_logic_vector;
+                      signal   dir_t   : inout std_logic_vector;      -- "inout" por omision la clase es "variable"
                       signal   cs_t    : inout std_logic;
                       signal   oe_t    : inout std_logic;
                       signal   dat_t   : inout std_logic_vector;
-                      variable dato    : out   std_logic_vector );  
+                      variable dato    : out   std_logic_vector );   -- "out" por omision la clase es "variable";  
   ------------------------------------------------------------------------------------------------------------------------ 
-  procedure verifica_sram (constant direccion  : integer;
-                           constant escrito    : std_logic_vector;  
-                           constant leido      : std_logic_vector );
+  procedure verifica_sram (constant direccion  : in integer;
+                           constant escrito    : in std_logic_vector;  
+                           constant leido      : in std_logic_vector );
   ------------------------------------------------------------------------------------------------------------------------ 
 
 end package miPackage;
@@ -219,22 +208,26 @@ package body miPackage is
   -- tiempos maximos:
   -- constant   tWHZ          : time      :=  tDW;  -- Write Enable to Ouput High-Z
   ------------------------------------------------------------------------------------------------------------------------
-  procedure escribe_sram (constant direc   : in    integer;
+  procedure escribe_sram (constant direc   : in    integer;               -- "in" por omision la clase es "constant"
                           constant dato    : in    integer;
                           signal   clk_t   : in    std_logic;                          
-                          signal   dir_t   : inout std_logic_vector;
+                          signal   dir_t   : inout std_logic_vector;      -- "inout" por omision la clase es "variable"
                           signal   cs_t    : inout std_logic;
                           signal   we_t    : inout std_logic;
-                          signal   dat_t   : inout std_logic_vector) is
+                          signal   dat_t   : inout std_logic_vector) is   -- "inout" por omision la clase es "variable"
   begin    
     dir_t <=  std_logic_vector(to_unsigned(direc, 4));
     wait for 10 ns;                                               -- tAS min 0 ns, Address Setup Time
     wait until rising_edge(clk_t);    
     wait for 3 ns;
     cs_t  <= '1'; 
-    wait for 30 ns;         
+    wait for 3 ns; 
+    wait until rising_edge(clk_t);    
+    wait for 3 ns;            
     we_t  <= '1';  
-    wait for 20 ns;        
+    wait for 3 ns; 
+    wait until rising_edge(clk_t);    
+    wait for 3 ns;        
     dat_t <= std_logic_vector(to_unsigned(dato, 4));  
     wait for 40 ns;	                                              -- tDW min 40 ns, Data Valid to End of Write
     dat_t <= "ZZZZ";
@@ -259,18 +252,18 @@ package body miPackage is
   -- constant   tCHZ          : time      :=  40 ns;  -- Chip Select to Output High-Z
   -- constant   tOHZ          : time      :=  40 ns;  -- Output Enable to Output High-Z  
   ------------------------------------------------------------------------------------------------------------------------ 
-  procedure lee_sram (constant direc   : integer;
+  procedure lee_sram (constant direc   : in    integer;               -- "in" por omision la clase es "constant"
                       signal   clk_t   : in    std_logic;
-                      signal   dir_t   : inout std_logic_vector;
+                      signal   dir_t   : inout std_logic_vector;      -- "inout" por omision la clase es "variable"
                       signal   cs_t    : inout std_logic;
                       signal   oe_t    : inout std_logic;
                       signal   dat_t   : inout std_logic_vector;
-                      variable dato    : out   std_logic_vector ) is
+                      variable dato    : out   std_logic_vector ) is  -- "out" por omision la clase es "variable"
   begin    
     dir_t <= std_logic_vector(to_unsigned(direc, 4));
-    wait for 3 ns;
+    wait for 3 ns;                                           -- ts y tp
     wait until rising_edge(clk_t);    
-    wait for 2 ns;
+    wait for 2 ns;                                           -- th
     cs_t  <= '1'; 
     wait for 3 ns;
     wait until rising_edge(clk_t);    
@@ -293,9 +286,9 @@ package body miPackage is
   -- Procedure: verifica_sram
   -- Verifica si el contenido de una determinada posicion de memoria de la sram es el esperado. 
   ------------------------------------------------------------------------------------------------------------------------ 
-  procedure verifica_sram (constant direccion  : integer;
-                           constant escrito    : std_logic_vector;  
-                           constant leido      : std_logic_vector ) is  
+  procedure verifica_sram (constant direccion  : in integer;
+                           constant escrito    : in std_logic_vector;  
+                           constant leido      : in std_logic_vector ) is  
   begin                             
     assert leido=escrito 
       report "Falla para la direccion " 
