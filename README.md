@@ -166,3 +166,4 @@ El contenido de este repositorio es material complementario de una serie de vide
 - [128. Descripción: memoria estática sincrónica con bus de datos bidireccional, SRAM. DE1.](https://www.youtube.com/watch?v=znC__UqGoog&feature=youtu.be)
 - [129. Testbench memoria SRAM estática, sincrónica, bus bidireccional. Usa procedimientos.](https://www.youtube.com/watch?v=emR1UD1Ecsc&feature=youtu.be)
 - [130. Simulación de la memoria SRAM estática, sincrónica, con bus bidireccional. Script.](https://www.youtube.com/watch?v=iXZ05uUWfVY&feature=youtu.be)
+- [131. Trasmisor de la UART RS-232. Prueba transmitiendo de la plaqueta a la computadora.](https://www.youtube.com/watch?v=yoBSufete8Y&feature=youtu.be)

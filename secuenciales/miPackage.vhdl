@@ -1,25 +1,30 @@
--- 25.11.20 --------------------- Susana Canel -------------------- miPackage.vhdl
+-- 30.11.20 ---------------------------------------- Susana Canel ----------------------------------------- miPackage.vhdl
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 use std.textio.all;
 
--------------------------- PARTE DECLARATIVA DEL PACKAGE -------------------------
+------------------------------------------- PARTE DECLARATIVA DEL PACKAGE ------------------------------------------------
 package miPackage is
-
-	--------------------------------------------------------------------------------
-	component CompNANDn is
-		generic(N          : positive := 4);
-		port   (entrada_i  : in  std_logic_vector(N-1 downto 0);
-				    salida_o   : out std_logic);
-	end component CompNANDn;
-	--------------------------------------------------------------------------------
-	component CompNORn is
-		generic(N          : positive := 4);
-		port   (entrada_i  : in  std_logic_vector(N-1 downto 0);
-				    salida_o   : out std_logic);
-	end component CompNORn;
-	--------------------------------------------------------------------------------
+  ------------------------------------------------------------------------------------------------------------------------
+  component baudRate is
+    port (clk_i    : in  std_logic;
+          rst_i    : in  std_logic; 
+          pulso_o  : out std_logic);   
+  end component baudRate;
+  ------------------------------------------------------------------------------------------------------------------------ 
+  component CompNANDn is
+	generic(N          : positive := 4);
+	port   (entrada_i  : in  std_logic_vector(N-1 downto 0);
+		    salida_o   : out std_logic);
+  end component CompNANDn;
+  ------------------------------------------------------------------------------------------------------------------------ 
+  component CompNORn is
+	generic(N          : positive := 4);
+	port   (entrada_i  : in  std_logic_vector(N-1 downto 0);
+			salida_o   : out std_logic);
+  end component CompNORn;
+  ------------------------------------------------------------------------------------------------------------------------ 
   component CompMagN is
     generic(N     : positive := 4);
     port   (a_i   : in  std_logic_vector(N-1 downto 0);
@@ -28,7 +33,7 @@ package miPackage is
             men_o : out std_logic;
             igu_o : out std_logic);
   end component CompMagN;
-	--------------------------------------------------------------------------------
+  ------------------------------------------------------------------------------------------------------------------------ 
  	component CompEntN is
     generic(N      : positive := 4);
     port   (a_i    : in  std_logic_vector(N-1 downto 0);
@@ -116,7 +121,7 @@ package miPackage is
          dig2_o    : out std_logic_vector(6 downto 0);
          dig3_o    : out std_logic_vector(6 downto 0));
   end component display7seg;
-  --------------------------------------------------------------------------------  
+  ------------------------------------------------------------------------------------------------------------------------  
   component sumSerieCir3 is
     port(clk_i     : in  std_logic;
          rst_i     : in  std_logic;   
