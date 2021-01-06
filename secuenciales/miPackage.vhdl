@@ -1,4 +1,4 @@
--- 30.11.20 ---------------------------------------- Susana Canel ----------------------------------------- miPackage.vhdl
+-- 02.12.20 ---------------------------------------- Susana Canel ----------------------------------------- miPackage.vhdl
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
@@ -6,6 +6,15 @@ use std.textio.all;
 
 ------------------------------------------- PARTE DECLARATIVA DEL PACKAGE ------------------------------------------------
 package miPackage is
+  ------------------------------------------------------------------------------------------------------------------------
+  component baudRate2 is
+    generic(BAUD_RATE    : positive :=9600;           -- bits/s
+            N            : positive := 4);            -- N veces el baud rate
+    port   (clk_i        : in  std_logic;
+            rst_i        : in  std_logic; 
+            pulsoBR_o    : out std_logic;        
+            pulsoNxBR_o  : out std_logic);   
+  end component baudRate2;  
   ------------------------------------------------------------------------------------------------------------------------
   component baudRate is
     port (clk_i    : in  std_logic;
