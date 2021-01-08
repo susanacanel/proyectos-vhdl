@@ -169,3 +169,4 @@ El contenido de este repositorio es material complementario de una serie de vide
 - [131. Trasmisor de la UART RS-232. Prueba transmitiendo de la plaqueta a la computadora.](https://www.youtube.com/watch?v=yoBSufete8Y&feature=youtu.be)
 - [131 Parte final. Transmisor UART RS-232. Uso cable HL-340. Terminal PuTTY.](https://www.youtube.com/watch?v=iPpmXI0MvB4&feature=youtu.be)
 - [132.Transmitiendo un mensaje, RS232, desde el circuito sintetizado a la PC. Descripción.](https://www.youtube.com/watch?v=xaXpz2J1Ohk&feature=youtu.be)
+- [133. Testbench: transmisor de la UART RS-232 enviando un mensaje. Simulación con GTKWave](https://www.youtube.com/watch?v=tgawRqGUtf8)

@@ -1,0 +1,7 @@
+ghdl -a miPackage.vhdl
+ghdl -a baudRate2.vhdl
+ghdl -a txRS232.vhdl
+ghdl -a txRS232_tb.vhdl
+ghdl -e txRS232_tb
+ghdl -r txRS232_tb --wave=tx.ghw
+gtkwave tx.ghw tx.gtkw &
