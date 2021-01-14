@@ -1,4 +1,4 @@
--- 02.12.20 ------------------ Susana Canel ------------------ baudRate2.vhdl 
+-- 14.01.21 ------------------ Susana Canel ------------------ baudRate2.vhdl 
 -- DIVISOR DE FRECUENCIA. GENERA UN RELOJ PARA EL BAUD RATE. CREA UN PULSO  
 -- EN '1' DURANTE UN CLOCK. GENERA OTRA PULSO DE UNA FRECUENCIA N VECES MAYOR 
 -- QUE LA DE BAUD RATE.
@@ -6,8 +6,8 @@ library ieee;
 use ieee.std_logic_1164.all;   
 -----------------------------------------------------------------------------
 entity baudRate2 is
-  generic (BAUD_RATE    : positive :=9600;           -- bits/s
-           N            : positive := 4);            -- N veces el baud rate
+  generic (BAUD_RATE    : positive :=115200;           -- bits/s
+           N            : positive := 4);              -- N veces el baud rate
   port    (clk_i        : in  std_logic;
            rst_i        : in  std_logic; 
            pulsoBR_o    : out std_logic;        
@@ -44,7 +44,7 @@ begin
           when contando =>
           
             -- N x baude rate          
-            if contador2>=CUENTA2 then 
+            if contador2>=CUENTA2-1 then 
               pulsoNxBR_o <= '1';
               contador2   <= 0; 
             else
@@ -53,7 +53,7 @@ begin
             end if;
 
             -- baude rate
-            if contador1>=CUENTA1 then 
+            if contador1>=CUENTA1-1 then 
               pulsoBR_o <= '1';
               contador1 <= 0;
             else
