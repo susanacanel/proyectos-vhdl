@@ -6,7 +6,7 @@ library ieee;
 use ieee.std_logic_1164.all;   
 -----------------------------------------------------------------------------
 entity baudRate2 is
-  generic (BAUD_RATE    : positive :=115200;           -- bits/s
+  generic (BAUD_RATE    : positive :=9600;             -- bits/s
            N            : positive := 4);              -- N veces el baud rate
   port    (clk_i        : in  std_logic;
            rst_i        : in  std_logic; 

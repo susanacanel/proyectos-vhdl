@@ -1,4 +1,4 @@
--- 02.12.20 ---------------------------------------- Susana Canel ----------------------------------------- miPackage.vhdl
+-- 11.01.21 ---------------------------------------- Susana Canel ----------------------------------------- miPackage.vhdl
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
@@ -6,6 +6,15 @@ use std.textio.all;
 
 ------------------------------------------- PARTE DECLARATIVA DEL PACKAGE ------------------------------------------------
 package miPackage is
+  ------------------------------------------------------------------------------------------------------------------------
+  component rxRS232 is
+    generic(BITS          : positive := 8;
+            BAUD_RATE     : positive := 9600);
+    port   (clk_i         : in  std_logic;
+            rst_i         : in  std_logic;         
+            rxd_i         : in  std_logic;         
+            caracter_o    : out std_logic_vector(BITS-1 downto 0));   
+  end component rxRS232;
   ------------------------------------------------------------------------------------------------------------------------
   component baudRate2 is
     generic(BAUD_RATE    : positive :=9600;           -- bits/s
