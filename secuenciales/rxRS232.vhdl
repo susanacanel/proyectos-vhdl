@@ -1,6 +1,6 @@
--- 15.01.21 -------------------------------- Susana Canel --------------------------------------- rxRS232.vhdl 
+-- 21.01.21 -------------------------------- Susana Canel --------------------------------------- rxRS232.vhdl 
 -- RECEPTOR DE LA UART (Universal Asynchronous Receiver/ Transmitter) RS_232.
--- RECIBE CARACTERES DE 8 BITS, CON UN SOLO BIT DE STOP Y SIN BIT DE PARIDAD.
+-- RECIBE CARACTERES DE 8 BITS, CON UN SOLO BIT DE STOP Y SIN BIT DE PARIDAD. A 9600 BITS/S.
 
 library ieee;   
 use ieee.std_logic_1164.all; 
@@ -24,11 +24,11 @@ architecture Arq of rxRS232 is
   signal   bufferRx          : std_logic_vector(BITS-1 downto 0);  
   signal   contadorBits      : unsigned(4 downto 0);           
   signal   contadorPulsos    : unsigned(5 downto 0);                -- dimension mayor de la necesaria
-  constant N_BAUD_RATE       : integer := 8;                        -- N veces la frecuencia del baud rate
-  constant CANTIDAD_PULSOS   : integer := N_BAUD_RATE - 1;          -- para posicionarse en la mitad del bit
+  constant N                 : integer := 8;                        -- N veces la frecuencia del baud rate
+  constant CANTIDAD_PULSOS   : integer := N - 1;                    -- para posicionarse en la mitad del bit
 begin
   u: component baudRate2 generic map(BAUD_RATE   => BAUD_RATE,
-                                     N           => N_BAUD_RATE)
+                                     N           => N)
                          port    map(clk_i       => clk_i,
                                      rst_i       => rst_i,       
                                      pulsoNxBR_o => pulsoN);                                                                                                          

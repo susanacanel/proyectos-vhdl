@@ -1,4 +1,4 @@
--- 11.01.21 ---------------------------------------- Susana Canel ----------------------------------------- miPackage.vhdl
+-- 13.01.21 ---------------------------------------- Susana Canel ----------------------------------------- miPackage.vhdl
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
