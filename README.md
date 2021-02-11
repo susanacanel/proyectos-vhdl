@@ -172,3 +172,4 @@ El contenido de este repositorio es material complementario de una serie de vide
 - [133. Testbench: transmisor de la UART RS-232 enviando un mensaje. Simulación con GTKWave](https://www.youtube.com/watch?v=tgawRqGUtf8)
 - [134. Descripción: receptor de la UART-RS232, baud rate. Circuito sintetizado. Ejecución.](https://www.youtube.com/watch?v=-Y6UCTr9xXE&feature=youtu.be)
 - [135.Testbench: receptor, UART RS-232. Relación: baud-rate/ muestreo. Solución.Simulación](https://www.youtube.com/watch?v=uCqtDF0gR0c&feature=youtu.be)
+- [136. Optimización: receptor de la UART RS-232. Descripción, testbench y simulación.](https://www.youtube.com/watch?v=G0cfDWs1LLo&feature=youtu.be)
