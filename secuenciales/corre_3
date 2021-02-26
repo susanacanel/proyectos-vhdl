@@ -1,0 +1,5 @@
+ghdl -a rxRS232_3.vhdl
+ghdl -a rxRS232_3_tb.vhdl
+ghdl -e rxRS232_3_tb
+ghdl -r rxRS232_3_tb --wave=rx.ghw
+gtkwave rx.ghw rx.gtkw
