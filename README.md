@@ -174,3 +174,4 @@ El contenido de este repositorio es material complementario de una serie de vide
 - [135.Testbench: receptor, UART RS-232. Relación: baud-rate/ muestreo. Solución.Simulación](https://www.youtube.com/watch?v=uCqtDF0gR0c&feature=youtu.be)
 - [136. Optimización: receptor de la UART RS-232. Descripción, testbench y simulación.](https://www.youtube.com/watch?v=G0cfDWs1LLo&feature=youtu.be)
 - [137. Optimización del hardware: UART RS-232 a 115200bps. Simulación. Ejecución plaqueta.](https://www.youtube.com/watch?v=62bOqE5B7is&feature=youtu.be)
+- [138. Optimización: transmisor de la UART RS-232. Descripción, testbench y simulación.](https://www.youtube.com/watch?v=bS9stvmuSyY)

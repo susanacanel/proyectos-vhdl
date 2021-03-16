@@ -1,0 +1,4 @@
+ghdl -a txRS232_3.vhdl
+ghdl -a txRS232_3_tb.vhdl
+ghdl -e txRS232_3_tb
+ghdl -r txRS232_3_tb
