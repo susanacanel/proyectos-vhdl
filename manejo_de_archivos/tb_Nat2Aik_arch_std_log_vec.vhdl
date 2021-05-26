@@ -1,15 +1,29 @@
--- 25.09.20 ------------------ Susana Canel ------------------ Nat2Aik_tb_arch_std_log_vec.vhdl
+-- 25.09.20 ------------------ Susana Canel ------------------ tb_Nat2Aik_arch_std_log_vec.vhdl
 -- TESTBENCH DEL CONVERSOR DE BCD NATURAL A BCD AIKEN. USA ARCHIVOS CON DATOS
 -- DE TIPO STD_LOGIC_VECTOR.
+use std.textio.all;
+
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
-use std.textio.all;
+
+library vunit_lib;
+context vunit_lib.vunit_context;
+
 --------------------------------------------------------------------------------
-entity Nat2Aik_tb_arch_std_log_vec is
-end entity Nat2Aik_tb_arch_std_log_vec;
+
+entity tb_Nat2Aik_arch_std_log_vec is
+  generic (
+    runner_cfg : string;
+    tb_path    : string;
+    txt_bcd    : string := "bcd-naturales_2.txt";
+    txt_aiken  : string := "bcd-aiken.txt"
+  );
+end entity tb_Nat2Aik_arch_std_log_vec;
+
 --------------------------------------------------------------------------------
-architecture Test of Nat2Aik_tb_arch_std_log_vec is
+
+architecture Test of tb_Nat2Aik_arch_std_log_vec is
   --------------------------------------------------
   component Nat2Aik_2 is
     port (n_i   : in  std_logic_vector(3 downto 0);
@@ -30,20 +44,22 @@ begin
     variable buffer1       : line;
     variable buffer2       : line;
     variable stringN       : string(1 to 4);
-    variable stringA       : string(1 to 4); 
+    variable stringA       : string(1 to 4);
     variable stdLogVectN   : std_logic_vector(3 downto 0);
     variable stdLogVectA   : std_logic_vector(3 downto 0);
-    variable espacio       : character;  
+    variable espacio       : character;
     constant ANCHO         : positive := 7;
   begin
+    test_runner_setup(runner, runner_cfg);
+
     report "Probando el conversor de BCD natural a BCD Aiken"
     severity note;
     ----------------------------------------------------------------------------
-    file_open(estado, inputhandle, "bcd-naturales_2.txt", read_mode);
+    file_open(estado, inputhandle, tb_path & txt_bcd, read_mode);
     assert estado = open_ok
       report "No se pudo abrir el archivo con los datos"
       severity failure;
-    file_open(estado, outputhandle, "bcd-aiken.txt", write_mode);
+    file_open(estado, outputhandle, tb_path & txt_aiken, write_mode);
     assert estado = open_ok
       report "No se pudo crear el archivo para escribir los resultados"
       severity failure;
@@ -58,7 +74,7 @@ begin
     write(buffer2, string'("______________________") & LF);
     writeline(outputHandle, buffer2);
     ----------------------------------------------------------------------------
-    -- El "read" de un string no "gasta" los espacios en blanco como si lo hacen 
+    -- El "read" de un string no "gasta" los espacios en blanco como si lo hacen
     -- los "read" de enteros, booleans, etc.
     -- (Es logico, uno podria querer leer un string con espacios antes o despues)
     -- Por eso hay que leer el espacio separador antes de leer el ultimo string.
@@ -106,7 +122,7 @@ begin
           when others => stdLogVectA(4 - i) := 'X';
         end case;
       end loop;
-      
+
       numeroDeLinea := numeroDeLinea + 1;
       assert a_t = stdLogVectA
         report "Error en la linea "
@@ -125,6 +141,7 @@ begin
 
     report "Prueba exitosa!"
       severity note;
+    test_runner_cleanup(runner);
     wait;
   end process Prueba;
 end architecture Test;
